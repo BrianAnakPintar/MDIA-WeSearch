@@ -1,6 +1,6 @@
 import "@/App.css";
 import Navbar from "@/components/ui/navbar";
-import podcast from "@/assets/imageNet.mp3";
+import podcast from "@/assets/ppp_podcast.wav";
 import { Box, Text } from "@chakra-ui/react";
 import "react-h5-audio-player/lib/styles.css";
 import { useParams } from "react-router-dom";

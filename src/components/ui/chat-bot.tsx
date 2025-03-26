@@ -5,13 +5,14 @@ import {
   Image,
   Menu,
   Portal,
+  Float,
+  Circle,
   IconButton,
-  Input,
-  Flex,
 } from "@chakra-ui/react";
 import rat_idle_gif from "@/assets/rat_idle.gif";
 import { TfiClose } from "react-icons/tfi";
 import VoiceChat from "./voice-chat";
+import { CgClose } from "react-icons/cg";
 
 export default function ChatBot() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,7 +51,15 @@ export default function ChatBot() {
           </Portal>
         </Menu.Root>
       )}
-      {showChat && <VoiceChat />}
+      {showChat && (
+        <VoiceChat>
+          <Float placement="top-end">
+            <IconButton borderRadius="2xl" background={"#"}>
+              <CgClose onClick={() => setShowChat(false)} />
+            </IconButton>
+          </Float>
+        </VoiceChat>
+      )}
     </Box>
   );
 }

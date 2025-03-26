@@ -1,36 +1,27 @@
-import "./App.css";
-import ArticleCard from "./components/ui/article-card";
-import { Badge, Button, For } from "@chakra-ui/react";
-import Navbar from "./components/ui/navbar";
-import { VscHome } from "react-icons/vsc";
-import { AiOutlineUpload } from "react-icons/ai";
-import { CiBookmark } from "react-icons/ci";
+import { Text, Button, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import ArticleListOz from "./components/ui/article-list-oz";
+import "./App.css";
+import Navbar from "./components/ui/navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="wrapper">
-        <div className="sidebar">
-          <Link to="/">
-            <Button className="nav-button selected-sideitem">
-              <VscHome /> Home
-            </Button>
+      <div className="landing-page">
+        <div className="left-landing">
+          <Text textStyle="5xl" fontWeight="bold" textAlign="center">
+            Research Simplified <br />
+            Just For You
+          </Text>
+          <Text>
+            AI-powered tools simplifying research analysis and comprehension
+          </Text>
+          <Link to="/home">
+            <Button borderRadius="1rem">Explore Research</Button>
           </Link>
-          <Link to="/upload">
-            <Button className="nav-button">
-              <AiOutlineUpload /> Upload
-            </Button>
-          </Link>
-          <Button className="nav-button">
-            <CiBookmark /> Bookmarks
-          </Button>
-          <Button className="nav-button">My Contribution</Button>
         </div>
-        <div className="main-homepage">
-          <ArticleListOz />
+        <div className="right-landing">
+          <Image></Image>
         </div>
       </div>
     </>

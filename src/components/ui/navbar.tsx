@@ -8,7 +8,7 @@ import { SlMagnifier } from "react-icons/sl";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link to="/home">
         <Button className="invis-btn" fontSize={"1.25rem"}>
           wesearch.ai <SlMagnifier />
         </Button>

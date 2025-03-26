@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Avatar } from "@/components/ui/avatar";
 import {
   Box,
   Flex,
   Heading,
   Text,
   Textarea,
-  List,
   IconButton,
+  Avatar,
 } from "@chakra-ui/react";
-import { FaPaperPlane } from "react-icons/fa";
+import { GiPowerButton } from "react-icons/gi";
+import { IoSend } from "react-icons/io5";
+import rat_idle_gif from "@/assets/rat_idle.gif";
+import rat_pfp from "@/assets/rat_pfp.png";
 
 interface MessageType {
   sender: string;
   text: string;
 }
 
-const VoiceChat: React.FC = () => {
+const VoiceChat: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [statusMessage, setStatusMessage] = useState("Disconnected");
   const [messages, setMessages] = useState<MessageType[]>([]);
@@ -63,7 +65,9 @@ const VoiceChat: React.FC = () => {
         audio: true,
       });
       localStreamRef.current = localStream;
-      localStream.getTracks().forEach((track) => pc.addTrack(track, localStream));
+      localStream
+        .getTracks()
+        .forEach((track) => pc.addTrack(track, localStream));
 
       pc.ontrack = (e) => {
         if (e.streams[0]) {
@@ -121,7 +125,7 @@ const VoiceChat: React.FC = () => {
             "Content-Type": "application/sdp",
           },
           body: offer.sdp,
-        }
+        },
       );
 
       const answerSdp = await sdpResp.text();
@@ -160,7 +164,7 @@ const VoiceChat: React.FC = () => {
   const fetchPdfChunks = async (query: string): Promise<string> => {
     try {
       const r = await fetch(
-        `http://localhost:8000/chunks?q=${encodeURIComponent(query)}`
+        `http://localhost:8000/chunks?q=${encodeURIComponent(query)}`,
       );
       const j = await r.json();
       return j.chunks.join("\n\n");
@@ -199,9 +203,9 @@ const VoiceChat: React.FC = () => {
   };
 
   return (
-    <Box maxW="800px" mx="auto" p={4}>
+    <Box maxW="750px" mx="auto" p={4} className="chatbot-bg">
       <Flex align="center" justify="space-between" mb={8}>
-        <Heading size="lg">AI Voice Chat</Heading>
+        <Heading size="lg">RAT Chat</Heading>
         <Flex align="center" gap={4}>
           <Text>{statusMessage}</Text>
           {isConnected ? (
@@ -209,35 +213,79 @@ const VoiceChat: React.FC = () => {
               aria-label="End session"
               colorScheme="red"
               onClick={endSession}
-            />
+            >
+              <GiPowerButton />
+            </IconButton>
           ) : (
-            <IconButton
-              aria-label="Start session"
-              colorScheme="green"
-              onClick={initWebRTC}
-            />
+            <Box display="flex">
+              <IconButton
+                aria-label="Start session"
+                colorScheme="green"
+                onClick={initWebRTC}
+              >
+                <GiPowerButton />
+              </IconButton>
+            </Box>
           )}
         </Flex>
       </Flex>
 
-      <Box bg="gray.50" borderRadius="md" p={4} mb={4} maxH="400px" overflowY="auto">
-        {messages.map((m, i) => (
-          <Box
-            key={i}
-            alignSelf={m.sender === "You" ? "flex-end" : "flex-start"}
-            bg={m.sender === "You" ? "blue.100" : "green.100"}
-            p={3}
-            borderRadius="md"
-          >
-            <Text fontWeight="medium">{m.sender}</Text>
-            <Text mt={1}>{m.text}</Text>
-          </Box>
-        ))}
+      {children}
+
+      <Box
+        bg="gray.50"
+        borderRadius="md"
+        p={4}
+        mb={4}
+        maxH="400px"
+        overflowY="auto"
+        background="transparent"
+        display="flex"
+        flexDirection="column"
+        gap="1rem"
+      >
+        {messages.map((m, i) =>
+          m.sender === "You" ? (
+            <Box
+              key={i}
+              alignSelf="flex-end"
+              bg="rgba(255,255,255,0.2)"
+              p={3}
+              borderRadius="md"
+            >
+              <Box display="flex" alignItems="center" gap="0.5rem">
+                <Avatar.Root variant="solid">
+                  <Avatar.Fallback />
+                  <Avatar.Image src={rat_pfp} />
+                </Avatar.Root>
+                <Text fontWeight="medium">{m.sender}</Text>
+              </Box>
+              <Text mt={1}>{m.text}</Text>
+            </Box>
+          ) : (
+            <Box
+              key={i}
+              alignSelf="flex-start"
+              bg="rgba(255,255,255,0.2)"
+              p={3}
+              borderRadius="md"
+            >
+              <Box display="flex" alignItems="center" gap="0.5rem">
+                <Avatar.Root>
+                  <Avatar.Image src={rat_idle_gif} />
+                </Avatar.Root>
+                <Text fontWeight="medium">{m.sender}</Text>
+              </Box>
+              <Text mt={1}>{m.text}</Text>
+            </Box>
+          ),
+        )}
       </Box>
 
       <Flex gap={2}>
         <Textarea
           value={inputText}
+          color="white"
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type your message..."
           onKeyPress={(e) =>
@@ -249,9 +297,10 @@ const VoiceChat: React.FC = () => {
         <IconButton
           aria-label="Send message"
           colorScheme="blue"
-          icon={<FaPaperPlane />}
           onClick={sendTextMessage}
-        />
+        >
+          <IoSend />
+        </IconButton>
       </Flex>
     </Box>
   );

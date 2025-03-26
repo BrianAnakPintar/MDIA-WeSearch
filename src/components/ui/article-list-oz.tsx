@@ -40,7 +40,7 @@ function ArticleListOz() {
                 avatar: "",
               },
               description: `This study examines how faculty mentor self-regulatory behaviors in a project-based learning environment within Vancouver’s Master of Digital Media (MDM) Program. Three faculty mentors ...`,
-              tags: ["ML/AI", "Science", "Technology"],
+              tags: ["Mentoring"],
               imageSrc:
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRapdvodJRX-DRtvHPNKcJhdMMgAwGzerwg&s",
               pdfFile: "ImageNet.pdf",
