@@ -9,8 +9,7 @@
  ## Backend
  1. make a new file called .env in backend directory
  2. then add this line in the .env file OPENAI_API_KEY={insert API KEY here}
- 
- 1.python -m venv venv
+ 1. python -m venv venv
  2. source venv/bin/activate OR windows: .\venv\Scripts\activate
  3. in new terminal: source venv/bin/activate OR windows: .\venv\Scripts\activate
  4. cd backend  
