@@ -9,16 +9,15 @@
 ## Backend
 1. make a new file called .env in backend directory
 2. then add this line in the .env file OPENAI_API_KEY={insert API KEY here}
+3. python -m venv venv
+4. source venv/bin/activate OR windows: .\venv\Scripts\activate
+5. in new terminal: source venv/bin/activate OR windows: .\venv\Scripts\activate
+6. cd backend
+7. git checkout backend <- if not merged
+8. pip install -r requirements.txt
+9. uvicorn main:app
 
-1. in new terminal: source venv/bin/activate OR windows: .\venv\Scripts\activate
-2. cd backend  
-3. git checkout backend <- if not merged
-4. pip install -r requirements.txt
-5. uvicorn main:app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
