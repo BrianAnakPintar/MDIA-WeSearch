@@ -52,7 +52,7 @@ def create_embedding(txt: str) -> List[float]:
         "Content-Type": "application/json"
     }
     body = {
-        "model": "text-embedding-ada-002",
+        "model": "text-embedding-3-small",
         "input": txt
     }
     r = requests.post(url, headers=headers, json=body)
@@ -68,7 +68,7 @@ def cached_create_embedding(txt: str) -> List[float]:
     if key in embedding_cache:
         logging.info("Cache hit for text.")
         return embedding_cache[key]
-
+    
     logging.info("Cache miss for text. Creating new embedding.")
     emb = create_embedding(txt)
     embedding_cache[key] = emb
@@ -163,7 +163,7 @@ def get_session():
         "OpenAI-Beta": "realtime=v1"
     }
     body = {
-        "model": "gpt-4o-mini-realtime-preview-2024-12-17",
+        "model": "gpt-4o-mini-realtime-preview",
         "modalities": ["audio", "text"],
         "instructions": "You are a friendly voice assistant that references PDF context when asked.",
         "voice": "ash",
