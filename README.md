@@ -1,8 +1,23 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
+# wesearch website
+ 
+ ## Frontend
+ 
+ 1. npm i
+ 
+ 2. npm run dev
+ 
+ ## Backend
+ 1. make a new file called .env in backend directory
+ 2. then add this line in the .env file OPENAI_API_KEY={insert API KEY here}
+ 
+ 1.python -m venv venv
+ 2. source venv/bin/activate OR windows: .\venv\Scripts\activate
+ 3. in new terminal: source venv/bin/activate OR windows: .\venv\Scripts\activate
+ 4. cd backend  
+ 5. git checkout backend <- if not merged
+ 6. pip install -r requirements.txt
+ 7. uvicorn main:app
+ 
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
