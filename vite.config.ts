@@ -7,4 +7,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   assetsInclude: ["**/*.pdf"],
+  server: {
+    watch: {
+      // Ignore backend folder (adjust the path if needed)
+      ignored: ['**/backend/**'], // or "**/backend/**" depending on your folder structure
+    },
+  },
 });
