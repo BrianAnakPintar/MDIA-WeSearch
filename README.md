@@ -1,4 +1,16 @@
-# React + TypeScript + Vite
+# wesearch website
+
+## Frontend
+npm i
+npm run dev
+
+## Backend
+source venv/bin/activate
+windows (.\venv\Scripts\activate)
+cd backend
+git checkout backend <- if not merged
+pip install -r requirements.txt
+uvicorn main:app
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
