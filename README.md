@@ -7,8 +7,10 @@
 2. npm run dev
 
 ## Backend
+1. make a new file called .env in backend directory
+2. then add this line in the .env file OPENAI_API_KEY={insert API KEY here}
 
-1. source venv/bin/activate OR windows: .\venv\Scripts\activate
+1. in new terminal: source venv/bin/activate OR windows: .\venv\Scripts\activate
 2. cd backend  
 3. git checkout backend <- if not merged
 4. pip install -r requirements.txt
