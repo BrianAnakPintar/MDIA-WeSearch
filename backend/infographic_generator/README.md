@@ -13,3 +13,11 @@ python main.py <pdf_path> \
   [--output infographic.png] \
   [--no-images]
 ```
+
+Example of the script:
+```bash
+python main.py ImageNet.pdf \
+  --title   "ImageNet" \
+  --authors "Feifei" \
+  --abstract "Here is the abstract text of the paper..."
+```

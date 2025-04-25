@@ -1,13 +1,14 @@
 import "@/App.css";
 import Navbar from "@/components/ui/navbar";
 import podcast from "@/assets/ppp_podcast.wav";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Image } from "@chakra-ui/react";
 import "react-h5-audio-player/lib/styles.css";
 import { useParams } from "react-router-dom";
 
 import patrick_paper from "@/assets/Pennefather_PhDDissertation_2016.pdf";
 import AudioPlayer from "@/components/ui/audio-player";
 import ChatBot from "@/components/ui/chat-bot";
+import infographic from "@/assets/infographic.png";
 
 // Define types for the data structure
 interface Author {
@@ -91,6 +92,9 @@ const Post = () => {
               Listen to AI-generated discussion of this paper
             </Text>
             <AudioPlayer src={podcast} />
+          </Box>
+          <Box width="90%" marginTop="5rem">
+            <Image src={infographic} alt="Infographic" width="100%" />
           </Box>
         </Box>
       </Box>
